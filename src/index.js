@@ -1,5 +1,7 @@
 import './css/styles.css';
 import { fetchCountries } from './fetchCountries';
+import countryListTemplate from './templates/country-list.hbs';
+import countryCardTemplate from './templates/country-cards.hbs';
 
 var debounce = require('lodash.debounce');
 const DEBOUNCE_DELAY = 1000;
