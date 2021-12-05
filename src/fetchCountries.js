@@ -3,10 +3,17 @@ export function fetchCountries(name) {
     .then(response => {
       return response.json();
     })
-    .then(country => {
-      console.log(country);
-    })
+    .then(renderCountryList)
     .catch(error => {
       console.log(error);
     });
+}
+
+import countryListTemplate from './templates/country-list.hbs';
+import countryCardTemplate from './templates/country-cards.hbs';
+
+const countryList = document.querySelector('.country-list');
+
+function renderCountryList(country) {
+  countryList.innerHTML = countryListTemplate(country);
 }
