@@ -1,5 +1,7 @@
 import countryListTemplate from './templates/country-list.hbs';
 import countryCardTemplate from './templates/country-cards.hbs';
+// all modules
+import Notiflix, { Notify } from 'notiflix';
 
 const countryList = document.querySelector('.country-list');
 const countryCard = document.querySelector('.country-info');
@@ -23,7 +25,7 @@ export function fetchCountries(name) {
 
 function markupRendering(country) {
   if (country.length >= 10) {
-    alert('Too many matches found. Please enter a more specific name.');
+    Notify.info('Too many matches found. Please enter a more specific name.');
     return;
   } else if (country.length > 1 && country.length <= 10) {
     countryList.innerHTML = countryListTemplate(country);
