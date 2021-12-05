@@ -8,7 +8,7 @@ const searchInput = document.querySelector('#search-box');
 searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(event) {
-  const searchQuery = event.target.value;
+  const searchQuery = event.target.value.trim();
 
   if (searchQuery != 0) {
     fetchCountries(searchQuery);
