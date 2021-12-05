@@ -9,6 +9,10 @@ searchInput.addEventListener('input', debounce(onSearch, DEBOUNCE_DELAY));
 
 function onSearch(event) {
   const searchQuery = event.target.value;
-  console.log(searchQuery);
-  fetchCountries(searchQuery);
+
+  if (searchQuery != 0) {
+    fetchCountries(searchQuery);
+  } else {
+    return;
+  }
 }
