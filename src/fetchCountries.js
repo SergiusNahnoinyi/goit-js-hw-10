@@ -1,3 +1,9 @@
+import countryListTemplate from './templates/country-list.hbs';
+import countryCardTemplate from './templates/country-cards.hbs';
+
+const countryList = document.querySelector('.country-list');
+const countryCard = document.querySelector('.country-info');
+
 export function fetchCountries(name) {
   if (name == 0) {
     return;
@@ -8,23 +14,22 @@ export function fetchCountries(name) {
       .then(response => {
         return response.json();
       })
-      .then(renderCountryCard)
+      .then(markupRendering)
       .catch(error => {
         console.log(error);
       });
   }
 }
 
-import countryListTemplate from './templates/country-list.hbs';
-import countryCardTemplate from './templates/country-cards.hbs';
-
-const countryList = document.querySelector('.country-list');
-const countryCard = document.querySelector('.country-info');
-
-function renderCountryList(country) {
-  countryList.innerHTML = countryListTemplate(country);
-}
-
-function renderCountryCard(country) {
-  countryCard.innerHTML = countryCardTemplate(country);
+function markupRendering(country) {
+  if (country.length >= 10) {
+    alert('Too many matches found. Please enter a more specific name.');
+    return;
+  } else if (country.length > 1 && country.length <= 10) {
+    countryList.innerHTML = countryListTemplate(country);
+    countryCard.innerHTML = '';
+    return;
+  } else countryCard.innerHTML = countryCardTemplate(country);
+  countryList.innerHTML = '';
+  return;
 }
