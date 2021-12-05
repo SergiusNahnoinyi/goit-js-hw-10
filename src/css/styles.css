@@ -28,15 +28,15 @@ ul {
 img {
   display: block;
   max-width: 100%;
-
+  margin-right: 10px;
 }
 
 .country-list__item {
   display: flex;
   align-items:center;
-
 }
 
-.country-list__image{
-  margin-right: 10px;
+.country-info__container{
+  display: flex;
+  align-items:center;
 }
